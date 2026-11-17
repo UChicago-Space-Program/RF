@@ -1,0 +1,824 @@
+options:
+  parameters:
+    author: Kevin Wu
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: OPS-SAT TX chain divided into GNU Radio DSP blocks. Imports ops_sat_framing.py
+      for CSP + OPS-SAT framing bits.
+    gen_cmake: 'Off'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: ops_sat_tx_wip
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: OPS-SAT TX (WIP)
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: amplitude
+  id: variable
+  parameters:
+    comment: ''
+    value: '0.25'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 312]
+    rotation: 0
+    state: enabled
+- name: baseband_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: baud*sps
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 312]
+    rotation: 0
+    state: enabled
+- name: baud
+  id: variable
+  parameters:
+    comment: ''
+    value: '9600'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 184]
+    rotation: 0
+    state: enabled
+- name: bt
+  id: variable
+  parameters:
+    comment: ''
+    value: '0.5'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 120]
+    rotation: 0
+    state: enabled
+- name: csp_crc32c
+  id: variable
+  parameters:
+    comment: False matches your original flags=0 packets; True appends CRC32C and
+      sets flag bit
+    value: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 552.0]
+    rotation: 0
+    state: enabled
+- name: csp_crc_include_header
+  id: variable
+  parameters:
+    comment: 'For libcsp v1 style CRC, usually False: CRC over CSP data, not header'
+    value: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 624.0]
+    rotation: 0
+    state: enabled
+- name: csp_data_hex
+  id: variable
+  parameters:
+    comment: Optional CSP data bytes after the 4-byte header; leave empty for demo
+      data
+    value: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [592, 400.0]
+    rotation: 0
+    state: enabled
+- name: csp_data_text
+  id: variable
+  parameters:
+    comment: None uses built-in binary demo data; set to a string for ASCII CSP data
+    value: None
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [592, 320.0]
+    rotation: 0
+    state: enabled
+- name: csp_dport
+  id: variable
+  parameters:
+    comment: CSP destination port
+    value: '31'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 320.0]
+    rotation: 0
+    state: enabled
+- name: csp_dst
+  id: variable
+  parameters:
+    comment: CSP destination address
+    value: '10'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [592, 624.0]
+    rotation: 0
+    state: enabled
+- name: csp_flags
+  id: variable
+  parameters:
+    comment: CSP flags byte; 0x00 matches your original packet header CA A7 C0 00
+    value: '0x00'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 480.0]
+    rotation: 0
+    state: enabled
+- name: csp_priority
+  id: variable
+  parameters:
+    comment: Default with src/dst/ports gives header CA A7 C0 00
+    value: '3'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [592, 480.0]
+    rotation: 0
+    state: enabled
+- name: csp_sport
+  id: variable
+  parameters:
+    comment: CSP source port
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [856, 400.0]
+    rotation: 0
+    state: enabled
+- name: csp_src
+  id: variable
+  parameters:
+    comment: CSP source address
+    value: '5'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [592, 552.0]
+    rotation: 0
+    state: enabled
+- name: decim_out
+  id: variable
+  parameters:
+    comment: ''
+    value: '144'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 568]
+    rotation: 0
+    state: enabled
+- name: freq
+  id: variable
+  parameters:
+    comment: ''
+    value: 437.160e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1216, 320.0]
+    rotation: 0
+    state: enabled
+- name: gap_ms
+  id: variable
+  parameters:
+    comment: ''
+    value: '25.0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 504]
+    rotation: 0
+    state: enabled
+- name: interp_out
+  id: variable
+  parameters:
+    comment: ''
+    value: '625'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 504]
+    rotation: 0
+    state: enabled
+- name: invert_symbols
+  id: variable
+  parameters:
+    comment: ''
+    value: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 376]
+    rotation: 0
+    state: enabled
+- name: mod_index
+  id: variable
+  parameters:
+    comment: ''
+    value: '1.0416666667'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 184]
+    rotation: 0
+    state: enabled
+- name: nrzi_initial
+  id: variable
+  parameters:
+    comment: ''
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 568]
+    rotation: 0
+    state: enabled
+- name: offset_hz
+  id: variable
+  parameters:
+    comment: ''
+    value: '40000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 440]
+    rotation: 0
+    state: enabled
+- name: output_path
+  id: variable
+  parameters:
+    comment: ''
+    value: '"/Users/kevinwu/Downloads/generated_osat_csp_from_blockified_grc.cf32"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 120]
+    rotation: 0
+    state: enabled
+- name: output_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '250000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 376]
+    rotation: 0
+    state: enabled
+- name: payload_hex
+  id: variable
+  parameters:
+    comment: ''
+    value: '""'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 312]
+    rotation: 0
+    state: enabled
+- name: payload_len
+  id: variable
+  parameters:
+    comment: ''
+    value: '62'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 184]
+    rotation: 0
+    state: enabled
+- name: payload_mode
+  id: variable
+  parameters:
+    comment: csp = decoded PDU starts with a 4-byte CSP v1 header; text/hex are raw
+      payload modes
+    value: '"csp"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 632]
+    rotation: 0
+    state: enabled
+- name: payload_text
+  id: variable
+  parameters:
+    comment: ''
+    value: None
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 248]
+    rotation: 0
+    state: enabled
+- name: phase_inc
+  id: variable
+  parameters:
+    comment: ''
+    value: 6.283185307179586*offset_hz/output_rate
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 504]
+    rotation: 0
+    state: enabled
+- name: postamble_flags
+  id: variable
+  parameters:
+    comment: ''
+    value: '5'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 440]
+    rotation: 0
+    state: enabled
+- name: preamble_flags
+  id: variable
+  parameters:
+    comment: ''
+    value: '50'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 376]
+    rotation: 0
+    state: enabled
+- name: repeat
+  id: variable
+  parameters:
+    comment: ''
+    value: '20'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [200, 120]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 250e3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1216, 400.0]
+    rotation: 0
+    state: enabled
+- name: sensitivity
+  id: variable
+  parameters:
+    comment: ''
+    value: 3.141592653589793*mod_index/sps
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 248]
+    rotation: 0
+    state: enabled
+- name: sps
+  id: variable
+  parameters:
+    comment: ''
+    value: '6'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 248]
+    rotation: 0
+    state: enabled
+- name: symbol_table
+  id: variable
+  parameters:
+    comment: ''
+    value: ([1.0, -1.0] if invert_symbols else [-1.0, 1.0])
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [392, 440]
+    rotation: 0
+    state: enabled
+- name: analog_frequency_modulator_fc_0
+  id: analog_frequency_modulator_fc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: CPFSK/GMSK phase integrator; sensitivity = pi*h/sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    sensitivity: sensitivity
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [840, 748.0]
+    rotation: 0
+    state: enabled
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: Raw complex64 cf32 output
+    file: output_path
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [2112, 772.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_amp
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Set IQ amplitude
+    const: amplitude
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1368, 764.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_gate
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Apply burst/silence gate
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1128, 748.0]
+    rotation: 0
+    state: enabled
+- name: blocks_rotator_cc_0
+  id: blocks_rotator_cc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Shift the 200 kS/s recording to +40 kHz for ops_sat_rx.py
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    phase_inc: phase_inc
+    tag_inc_update: 'False'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1856, 764.0]
+    rotation: 0
+    state: enabled
+- name: blocks_vector_source_bits
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Unpacked TX bits after OPS-SAT framing/G3RUH/NRZI
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'True'
+    tags: '[]'
+    type: byte
+    vector: ops_stage.make_bitstream(repeat, payload_len, payload_mode, payload_text,
+      payload_hex, preamble_flags, postamble_flags, gap_ms, nrzi_initial, sps, csp_data_text,
+      csp_data_hex, csp_priority, csp_src, csp_dst, csp_dport, csp_sport, csp_flags,
+      csp_crc32c, csp_crc_include_header)
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [24, 740.0]
+    rotation: 0
+    state: enabled
+- name: blocks_vector_source_gate
+  id: blocks_vector_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: 1 during frames, 0 during silent gaps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    repeat: 'True'
+    tags: '[]'
+    type: complex
+    vector: ops_stage.make_gate(repeat, payload_len, payload_mode, payload_text, payload_hex,
+      preamble_flags, postamble_flags, gap_ms, nrzi_initial, sps, csp_data_text, csp_data_hex,
+      csp_priority, csp_src, csp_dst, csp_dport, csp_sport, csp_flags, csp_crc32c,
+      csp_crc_include_header)
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [840, 848]
+    rotation: 0
+    state: enabled
+- name: digital_chunks_to_symbols_bf_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: 0/1 -> -1/+1 NRZ symbols
+    dimension: '1'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: float
+    symbol_table: symbol_table
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [280, 732.0]
+    rotation: 0
+    state: enabled
+- name: interp_fir_filter_fff_0
+  id: interp_fir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: Gaussian pulse shaping + interpolate to 57.6 kS/s
+    interp: sps
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_delay: '0'
+    taps: ops_stage.gmsk_taps(bt, sps)
+    type: fff
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [560, 744.0]
+    rotation: 0
+    state: enabled
+- name: note_file
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: 'Stage 3: burst gate/silence, amplitude, 57.6k -> 200k rational resampler,
+      +40 kHz rotator, complex64 file sink for ops_sat_rx.py.'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 232]
+    rotation: 0
+    state: enabled
+- name: note_frame
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: 'Stage 1: CSP packet + OPS-SAT framing bits. Python builds CSP v1 bytes,
+      then wraps them with the exact non-standard AX100/OPS-SAT stack: RS(255,223)
+      -> CCSDS randomizer -> AX.25 UI -> FCS -> HDLC bit stuffing/flags -> G3RUH ->
+      NRZI.'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 24]
+    rotation: 0
+    state: enabled
+- name: note_mod
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: 'Stage 2: GMSK/CPFSK modulation as real GNU Radio blocks: 0/1 bits -> chunks_to_symbols
+      [-1,+1] -> Gaussian interpolating FIR -> frequency_modulator_fc. Sensitivity
+      = pi*h/sps, so h controls frequency deviation.'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [536, 128]
+    rotation: 0
+    state: enabled
+- name: ops_stage
+  id: epy_module
+  parameters:
+    alias: ''
+    comment: ''
+    source_code: "# Helper functions for the blockified OPS-SAT TX GRC.\n# This imports\
+      \ your known-working ops_sat_framing.py and only uses it\n# for the non-standard\
+      \ packet/framing stages. The modulation/resampling/\n# frequency offset are\
+      \ done by visible GNU Radio blocks.\nimport os\nimport sys\nimport numpy as\
+      \ np\n\ntry:\n    FLOWGRAPH_DIR = os.path.dirname(os.path.abspath(__file__))\n\
+      except Exception:\n    FLOWGRAPH_DIR = os.getcwd()\n\nfor d in (FLOWGRAPH_DIR,\
+      \ os.path.expanduser(\"~/Downloads\")):\n    if d and d not in sys.path:\n \
+      \       sys.path.insert(0, d)\n\nimport ops_sat_framing as tx\n\n\ndef _none_if_empty(x):\n\
+      \    return None if x in (None, \"\") else str(x)\n\n\ndef _payload(payload_mode,\
+      \ payload_text, payload_hex, payload_len, frame_counter,\n             csp_data_text=None,\
+      \ csp_data_hex=\"\", csp_priority=3, csp_src=5,\n             csp_dst=10, csp_dport=31,\
+      \ csp_sport=0, csp_flags=0,\n             csp_crc32c=False, csp_crc_include_header=False):\n\
+      \    return tx.build_payload(\n        _none_if_empty(payload_text),\n     \
+      \   _none_if_empty(payload_hex),\n        int(payload_len),\n        int(frame_counter),\n\
+      \        payload_mode=str(payload_mode),\n        csp_data_text=_none_if_empty(csp_data_text),\n\
+      \        csp_data_hex=_none_if_empty(csp_data_hex),\n        csp_priority=int(csp_priority),\n\
+      \        csp_src=int(csp_src),\n        csp_dst=int(csp_dst),\n        csp_dport=int(csp_dport),\n\
+      \        csp_sport=int(csp_sport),\n        csp_flags=int(csp_flags),\n    \
+      \    csp_crc32c=bool(csp_crc32c),\n        csp_crc_include_header=bool(csp_crc_include_header),\n\
+      \    )\n\n\ndef _frame_bits(payload_len=62, payload_mode=\"csp\", payload_text=None,\n\
+      \                payload_hex=\"\", preamble_flags=50, postamble_flags=5,\n \
+      \               nrzi_initial=0, frame_counter=0, csp_data_text=None,\n     \
+      \           csp_data_hex=\"\", csp_priority=3, csp_src=5, csp_dst=10,\n    \
+      \            csp_dport=31, csp_sport=0, csp_flags=0,\n                csp_crc32c=False,\
+      \ csp_crc_include_header=False):\n    payload = _payload(payload_mode, payload_text,\
+      \ payload_hex, payload_len,\n                       frame_counter, csp_data_text,\
+      \ csp_data_hex,\n                       csp_priority, csp_src, csp_dst, csp_dport,\
+      \ csp_sport,\n                       csp_flags, csp_crc32c, csp_crc_include_header)\n\
+      \    return tx.make_tx_bits(\n        payload,\n        preamble_flags=int(preamble_flags),\n\
+      \        postamble_flags=int(postamble_flags),\n        nrzi_initial=int(nrzi_initial),\n\
+      \    )\n\n\ndef _gap_bits(gap_ms=25.0, sps=6):\n    # The GMSK chain outputs\
+      \ exactly sps complex samples per input bit.\n    # Use dummy bits for the gap\
+      \ and multiply the resulting samples by 0\n    # with a parallel gate vector\
+      \ after FM modulation.\n    gap_samples = int(round(tx.BASEBAND_RATE * float(gap_ms)\
+      \ / 1000.0))\n    return int(round(gap_samples / int(sps)))\n\n\ndef make_bitstream(repeat=20,\
+      \ payload_len=62, payload_mode=\"csp\",\n                   payload_text=None,\
+      \ payload_hex=\"\", preamble_flags=50,\n                   postamble_flags=5,\
+      \ gap_ms=25.0, nrzi_initial=0, sps=6,\n                   csp_data_text=None,\
+      \ csp_data_hex=\"\", csp_priority=3,\n                   csp_src=5, csp_dst=10,\
+      \ csp_dport=31, csp_sport=0,\n                   csp_flags=0, csp_crc32c=False,\
+      \ csp_crc_include_header=False):\n    bits = []\n    repeat = int(repeat)\n\
+      \    for i in range(repeat):\n        frame = _frame_bits(payload_len, payload_mode,\
+      \ payload_text, payload_hex,\n                            preamble_flags, postamble_flags,\
+      \ nrzi_initial, i,\n                            csp_data_text, csp_data_hex,\
+      \ csp_priority, csp_src,\n                            csp_dst, csp_dport, csp_sport,\
+      \ csp_flags,\n                            csp_crc32c, csp_crc_include_header)\n\
+      \        bits.extend(int(b) & 1 for b in frame)\n        if i != repeat - 1\
+      \ and float(gap_ms) > 0:\n            bits.extend([0] * _gap_bits(gap_ms, sps))\n\
+      \    return bits\n\n\ndef make_gate(repeat=20, payload_len=62, payload_mode=\"\
+      csp\",\n              payload_text=None, payload_hex=\"\", preamble_flags=50,\n\
+      \              postamble_flags=5, gap_ms=25.0, nrzi_initial=0, sps=6,\n    \
+      \          csp_data_text=None, csp_data_hex=\"\", csp_priority=3,\n        \
+      \      csp_src=5, csp_dst=10, csp_dport=31, csp_sport=0,\n              csp_flags=0,\
+      \ csp_crc32c=False, csp_crc_include_header=False):\n    gate = []\n    repeat\
+      \ = int(repeat)\n    sps = int(sps)\n    for i in range(repeat):\n        frame\
+      \ = _frame_bits(payload_len, payload_mode, payload_text, payload_hex,\n    \
+      \                        preamble_flags, postamble_flags, nrzi_initial, i,\n\
+      \                            csp_data_text, csp_data_hex, csp_priority, csp_src,\n\
+      \                            csp_dst, csp_dport, csp_sport, csp_flags,\n   \
+      \                         csp_crc32c, csp_crc_include_header)\n        gate.extend([1.0\
+      \ + 0.0j] * (len(frame) * sps))\n        if i != repeat - 1 and float(gap_ms)\
+      \ > 0:\n            gate.extend([0.0 + 0.0j] * (_gap_bits(gap_ms, sps) * sps))\n\
+      \    return gate\n\n\ndef gmsk_taps(bt=0.5, sps=6):\n    # Match GNU Radio's\
+      \ gmsk_mod internal decomposition:\n    # firdes.gaussian(...) convolved with\
+      \ a rectangular symbol window,\n    # then used as the taps of interp_fir_filter_fff(sps,\
+      \ taps).\n    from gnuradio.filter import firdes\n    ntaps = 4 * int(sps)\n\
+      \    gaussian = firdes.gaussian(1, int(sps), float(bt), ntaps)\n    sqwave =\
+      \ np.ones(int(sps), dtype=np.float64)\n    return np.convolve(np.array(gaussian,\
+      \ dtype=np.float64), sqwave).tolist()\n"
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [728, 24]
+    rotation: 0
+    state: enabled
+- name: rational_resampler_ccc_0
+  id: rational_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: 57.6 kS/s -> 200 kS/s; 125/36 ratio
+    decim: decim_out
+    fbw: '0'
+    interp: interp_out
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    taps: '[]'
+    type: ccc
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1608, 752.0]
+    rotation: 0
+    state: enabled
+- name: soapy_plutosdr_sink_0
+  id: soapy_plutosdr_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bandwidth: '0.0'
+    center_freq: freq
+    comment: ''
+    dev_args: ''
+    gain: '20'
+    samp_rate: samp_rate
+    type: fc32
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [2120, 900.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [analog_frequency_modulator_fc_0, '0', blocks_multiply_gate, '0']
+- [blocks_multiply_const_amp, '0', rational_resampler_ccc_0, '0']
+- [blocks_multiply_gate, '0', blocks_multiply_const_amp, '0']
+- [blocks_rotator_cc_0, '0', blocks_file_sink_0, '0']
+- [blocks_rotator_cc_0, '0', soapy_plutosdr_sink_0, '0']
+- [blocks_vector_source_bits, '0', digital_chunks_to_symbols_bf_0, '0']
+- [blocks_vector_source_gate, '0', blocks_multiply_gate, '1']
+- [digital_chunks_to_symbols_bf_0, '0', interp_fir_filter_fff_0, '0']
+- [interp_fir_filter_fff_0, '0', analog_frequency_modulator_fc_0, '0']
+- [rational_resampler_ccc_0, '0', blocks_rotator_cc_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.12.0
